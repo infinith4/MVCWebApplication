@@ -1,0 +1,30 @@
+﻿@using MVCWebApplication.Models
+@using MVCWebApplication.Common
+
+@model OrderModel.Product
+
+@{
+    ViewBag.Title = "SelectProduct";
+}
+
+@using (Html.BeginForm())
+{
+    <hr>
+    <h3>商品一覧</h3>
+    foreach (var item in (IEnumerable<SelectListItem>)ViewData[Const.ViewData.PRODUCT_DROPDOWN_LIST])
+    {
+        if (item.Value != "-1")
+        {
+            <div>
+                @item.Text
+            </div>
+        }
+    }
+    <hr>
+    <h3>商品選択</h3>
+    @Html.DropDownListFor(
+      model => model.ProductId,
+      (IEnumerable<SelectListItem>)ViewData[Const.ViewData.PRODUCT_DROPDOWN_LIST]
+    )
+    <input type="submit" value="商品を注文する">
+}

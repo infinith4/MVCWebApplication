@@ -103,8 +103,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\LearnAppsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LearnAppsModel.edmx</DependentUpon>
       <LastGenOutput>LearnAppsModel.Context.cs</LastGenOutput>
+      <DependentUpon>LearnAppsModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\LearnAppsModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -124,12 +124,15 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Order\SelectProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Const.cs" />
+    <Compile Include="Common\Log.cs" />
     <Compile Include="Common\Utils\OrderUtil.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +152,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LearnAppsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MST_Manager.cs">
+      <DependentUpon>LearnAppsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MST_Price.cs">
       <DependentUpon>LearnAppsModel.tt</DependentUpon>

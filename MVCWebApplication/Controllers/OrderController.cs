@@ -14,7 +14,7 @@ namespace MVCWebApplication.Controllers
         LearnAppsEntities _db = new LearnAppsEntities();
         string _sessionId = string.Empty;
         string _aspId = string.Empty;
-
+        Log log = new Log();
         // 1. GET: Order
         public ActionResult Index()
         {
@@ -55,6 +55,9 @@ namespace MVCWebApplication.Controllers
         {
             try
             {
+            	//強制的にExceptionを発生させる
+            	//throw new Exception();
+                
                 _sessionId = Session[Const.Session.SESSION_ID].ToString();
                 _aspId = Session[Const.Session.ASP_ID].ToString();
                 if (model.ProductId != -1)
@@ -99,6 +102,7 @@ namespace MVCWebApplication.Controllers
             }
             catch (Exception ex)
             {
+                log.WriteError("SelectProduct[HttpPost]でエラーが発生", ex);
                 throw;
             }
         }

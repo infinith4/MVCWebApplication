@@ -23,5 +23,10 @@ namespace MVCWebApplication.Common
         {
             public static string ORDER_END = "~/Order/End";
         }
+
+        public static class Config
+        {
+            public static string LOG_PATH = "LogPath";
+        }
     }
 }

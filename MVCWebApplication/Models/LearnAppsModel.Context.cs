@@ -25,6 +25,7 @@ namespace MVCWebApplication.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<MST_Manager> MST_Manager { get; set; }
         public virtual DbSet<MST_Price> MST_Price { get; set; }
         public virtual DbSet<MST_Product> MST_Product { get; set; }
         public virtual DbSet<OrderManage> OrderManage { get; set; }

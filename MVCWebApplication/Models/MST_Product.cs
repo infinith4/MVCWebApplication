@@ -16,5 +16,6 @@ namespace MVCWebApplication.Models
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public string Detail { get; set; }
     }
 }

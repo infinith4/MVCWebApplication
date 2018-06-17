@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="LearnAppsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="MST_Manager">
-          <Key>
-            <PropertyRef Name="ASP_ID" />
-            <PropertyRef Name="ManageUserId" />
-          </Key>
-          <Property Name="ASP_ID" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="ManageUserId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="MST_Price">
           <Key>
             <PropertyRef Name="ASP_ID" />
@@ -28,6 +20,7 @@
           </Key>
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="Detail" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="OrderManage">
           <Key>
@@ -39,7 +32,6 @@
           <Property Name="Price" Type="money" />
         </EntityType>
         <EntityContainer Name="LearnAppsModelStoreContainer">
-          <EntitySet Name="MST_Manager" EntityType="Self.MST_Manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_Price" EntityType="Self.MST_Price" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MST_Product" EntityType="Self.MST_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderManage" EntityType="Self.OrderManage" Schema="dbo" store:Type="Tables" />
@@ -49,14 +41,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LearnAppsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="MST_Manager">
-          <Key>
-            <PropertyRef Name="ASP_ID" />
-            <PropertyRef Name="ManageUserId" />
-          </Key>
-          <Property Name="ASP_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ManageUserId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="MST_Price">
           <Key>
             <PropertyRef Name="ASP_ID" />
@@ -72,6 +56,7 @@
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderManage">
           <Key>
@@ -82,8 +67,7 @@
           <Property Name="ProductId" Type="Int32" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
-        <EntityContainer Name="LearnAppsEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="MST_Manager" EntityType="Self.MST_Manager" />
+        <EntityContainer Name="LearnAppsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="MST_Price" EntityType="Self.MST_Price" />
           <EntitySet Name="MST_Product" EntityType="Self.MST_Product" />
           <EntitySet Name="OrderManage" EntityType="Self.OrderManage" />
@@ -93,15 +77,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LearnAppsModelStoreContainer" CdmEntityContainer="LearnAppsEntities1">
-          <EntitySetMapping Name="MST_Manager">
-            <EntityTypeMapping TypeName="LearnAppsModel.MST_Manager">
-              <MappingFragment StoreEntitySet="MST_Manager">
-                <ScalarProperty Name="ASP_ID" ColumnName="ASP_ID" />
-                <ScalarProperty Name="ManageUserId" ColumnName="ManageUserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="LearnAppsModelStoreContainer" CdmEntityContainer="LearnAppsEntities">
           <EntitySetMapping Name="MST_Price">
             <EntityTypeMapping TypeName="LearnAppsModel.MST_Price">
               <MappingFragment StoreEntitySet="MST_Price">
@@ -116,6 +92,7 @@
               <MappingFragment StoreEntitySet="MST_Product">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

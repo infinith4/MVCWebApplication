@@ -153,9 +153,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LearnAppsModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MST_Manager.cs">
-      <DependentUpon>LearnAppsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\MST_Price.cs">
       <DependentUpon>LearnAppsModel.tt</DependentUpon>
     </Compile>
